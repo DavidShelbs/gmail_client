@@ -7,43 +7,43 @@ import pickle
 from email.mime.text import MIMEText
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
-from googleapiclient import errors
-from googleapiclient.discovery import build
+from apiclient import errors
+from apiclient.discovery import build
 
-def get_service():
-    """Gets an authorized Gmail API service instance.
-
-    Returns:
-        An authorized Gmail API service instance..
-    """
-
-    # If modifying these scopes, delete the file token.pickle.
-    SCOPES = [
-        'https://www.googleapis.com/auth/gmail.readonly',
-        'https://www.googleapis.com/auth/gmail.send',
-    ]
-
-    creds = None
-    # The file token.pickle stores the user's access and refresh tokens, and is
-    # created automatically when the authorization flow completes for the first
-    # time.
-    if os.path.exists('token.pickle'):
-        with open('token.pickle', 'rb') as token:
-            creds = pickle.load(token)
-    # If there are no (valid) credentials available, let the user log in.
-    if not creds or not creds.valid:
-        if creds and creds.expired and creds.refresh_token:
-            creds.refresh(Request())
-        else:
-            flow = InstalledAppFlow.from_client_secrets_file(
-                'credentials.json', SCOPES)
-            creds = flow.run_local_server(port=0)
-        # Save the credentials for the next run
-        with open('token.pickle', 'wb') as token:
-            pickle.dump(creds, token)
-
-    service = build('gmail', 'v1', credentials=creds)
-    return service
+# def get_service():
+#     """Gets an authorized Gmail API service instance.
+#
+#     Returns:
+#         An authorized Gmail API service instance..
+#     """
+#
+#     # If modifying these scopes, delete the file token.pickle.
+#     SCOPES = [
+#         'https://www.googleapis.com/auth/gmail.readonly',
+#         'https://www.googleapis.com/auth/gmail.send',
+#     ]
+#
+#     creds = None
+#     # The file token.pickle stores the user's access and refresh tokens, and is
+#     # created automatically when the authorization flow completes for the first
+#     # time.
+#     if os.path.exists('token.pickle'):
+#         with open('token.pickle', 'rb') as token:
+#             creds = pickle.load(token)
+#     # If there are no (valid) credentials available, let the user log in.
+#     if not creds or not creds.valid:
+#         if creds and creds.expired and creds.refresh_token:
+#             creds.refresh(Request())
+#         else:
+#             flow = InstalledAppFlow.from_client_secrets_file(
+#                 'credentials.json', SCOPES)
+#             creds = flow.run_local_server(port=0)
+#         # Save the credentials for the next run
+#         with open('token.pickle', 'wb') as token:
+#             pickle.dump(creds, token)
+#
+#     service = build('gmail', 'v1', credentials=creds)
+#     return service
 
 def send_message(service, sender, message):
   """Send an email message.
