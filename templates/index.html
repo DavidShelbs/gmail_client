@@ -5,10 +5,9 @@
   </head>
   <body>
     <form action="/spam" method="get">
-      From: <input type="text" name="from"><br>
-      To: <input type="text" name="to"><br>
-      <!-- Message: <input type="text" name="message"><br> -->
-      Password: <input type="password" name="password"><br>
+      To: <input type="text" name="to"><br><br>
+      Subject: <input type="text" name="subject"><br><br>
+      Message: <textarea rows = "5" cols = "60" name="message"></textarea><br><br>
       <button type="submit" formmethod="post">Submit using POST</button>
     </form>
   </body>
