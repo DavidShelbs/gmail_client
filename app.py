@@ -31,7 +31,6 @@ def spam():
         #           '<b>A mail from you from Python</b><br><br>' +
         #           'So happy to hear from you!')
         # email_client.send_message(email, to, message, password)
-        return render_template('index.html')
     except:
         return render_template('index.html')
 
