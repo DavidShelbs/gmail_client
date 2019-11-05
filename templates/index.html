@@ -1,14 +1,25 @@
 <!doctype html>
 <html>
   <head>
-    <title>SPAM!</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap');
+    </style>
+    <title>Boonmail</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
   </head>
   <body>
-    <form action="/spam" method="get">
-      To: <input type="text" name="to"><br><br>
-      Subject: <input type="text" name="subject"><br><br>
-      Message: <textarea rows = "5" cols = "60" name="message"></textarea><br><br>
-      <button type="submit" formmethod="post">Submit using POST</button>
-    </form>
+    <div class=header>
+      <p class="header" id=title>boonmail<span class=blink>_</span></p>
+    </div>
+    <div class=main_form>
+      <form action="/spam" method="get">
+        <input type="text" id=to name="to" placeholder="To"><br>
+        <input type="text" id=sub name="subject" placeholder="Subject"><br>
+        <textarea rows = "7" name="message" placeholder="Message"></textarea><br>
+        <div class=button>
+          <button type="submit" formmethod="post">Send</button>
+        </div>
+      </form>
+    </div>
   </body>
 </html>

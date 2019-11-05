@@ -1,0 +1,100 @@
+#title
+{
+  font-size: 100px;
+  color: white;
+  font-family: 'Roboto Mono', monospace;
+}
+
+.header
+{
+  text-align: center;
+  margin: 0;
+  padding: 15px;
+}
+
+.main_form
+{
+  margin: 0;
+  padding: 30px;
+}
+
+.button
+{
+  position: relative;
+}
+
+body
+{
+  margin: 0;
+  background-color: black;
+}
+
+input, textarea
+{
+  font-family: 'Roboto Mono', monospace;
+  font-size: 20px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+input#to
+{
+  width: 50%;
+}
+
+input#sub, textarea
+{
+  width: 100%;
+}
+
+button
+{
+  font-family: 'Roboto Mono', monospace;
+  font-size: 30px;
+  position: absolute;
+  right: 0;
+  border-color: white;
+  color: white;
+  background-color: black;
+  padding: 0 20px;
+}
+
+.blink {
+	-webkit-animation: blink 1s linear infinite;
+	-moz-animation: blink 1s linear infinite;
+	-ms-animation: blink 1s linear infinite;
+	-o-animation: blink 1s linear infinite;
+	 animation: blink 1s linear infinite;
+}
+@-webkit-keyframes blink {
+	0% { opacity: 1; }
+	50% { opacity: 1; }
+	50.01% { opacity: 0; }
+	100% { opacity: 0; }
+}
+@-moz-keyframes blink {
+	0% { opacity: 1; }
+	50% { opacity: 1; }
+	50.01% { opacity: 0; }
+	100% { opacity: 0; }
+}
+@-ms-keyframes blink {
+	0% { opacity: 1; }
+	50% { opacity: 1; }
+	50.01% { opacity: 0; }
+	100% { opacity: 0; }
+}
+@-o-keyframes blink {
+	0% { opacity: 1; }
+	50% { opacity: 1; }
+	50.01% { opacity: 0; }
+	100% { opacity: 0; }
+}
+@keyframes blink {
+	0% { opacity: 1; }
+	50% { opacity: 1; }
+	50.01% { opacity: 0; }
+	100% { opacity: 0; }
+}
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap');
