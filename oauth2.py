@@ -3,19 +3,7 @@ from oauth2client.client import flow_from_clientsecrets
 from oauth2client.client import FlowExchangeError
 from apiclient.discovery import build
 import httplib2
-# ...
 
-
-# Path to client_secrets.json which should contain a JSON document such as:
-#   {
-#     "web": {
-#       "client_id": "[[YOUR_CLIENT_ID]]",
-#       "client_secret": "[[YOUR_CLIENT_SECRET]]",
-#       "redirect_uris": [],
-#       "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-#       "token_uri": "https://accounts.google.com/o/oauth2/token"
-#     }
-#   }
 CLIENTSECRETS_LOCATION = 'client_secrets.json'
 REDIRECT_URI = 'https://rollickboon.us/done'
 SCOPES = [
