@@ -19,9 +19,6 @@ import httplib2
 CLIENTSECRETS_LOCATION = 'client_secrets.json'
 REDIRECT_URI = 'https://rollickboon.us:5001/done'
 SCOPES = [
-    'https://www.googleapis.com/auth/gmail.readonly',
-    'https://www.googleapis.com/auth/userinfo.email',
-    'https://www.googleapis.com/auth/userinfo.profile',
     'https://mail.google.com/'
     # Add other requested scopes.
 ]
