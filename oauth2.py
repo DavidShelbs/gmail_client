@@ -1,6 +1,7 @@
 import logging
 from oauth2client.client import flow_from_clientsecrets
 from oauth2client.client import FlowExchangeError
+from apiclient import errors
 from apiclient.discovery import build
 import httplib2
 # ...
@@ -138,9 +139,10 @@ def get_authorization_url(email_address, state):
   """
   flow = flow_from_clientsecrets(CLIENTSECRETS_LOCATION, ' '.join(SCOPES))
   flow.params['access_type'] = 'offline'
-  flow.params['approval_prompt'] = 'force'
+  # flow.params['approval_prompt'] = 'force'
   flow.params['user_id'] = email_address
   flow.params['state'] = state
+  flow.params['prompt'] = 'consent'
   return flow.step1_get_authorize_url(REDIRECT_URI)
 
 
