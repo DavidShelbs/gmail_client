@@ -17,7 +17,7 @@ import httplib2
 #     }
 #   }
 CLIENTSECRETS_LOCATION = 'client_secrets.json'
-REDIRECT_URI = 'https://rollickboon.us:5001/done'
+REDIRECT_URI = 'https://rollickboon.us/done'
 SCOPES = [
     'https://mail.google.com/'
     # Add other requested scopes.

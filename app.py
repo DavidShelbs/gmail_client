@@ -37,5 +37,5 @@ def done():
 
 if __name__ == "__main__":
     app.secret_key = os.urandom(24)
-    app.run(debug=True,host='192.168.0.22', port=5001,ssl_context='adhoc')
+    app.run(debug=True, host='192.168.0.22', port=443, ssl_context='adhoc')
     # app.run(debug=True,host='192.168.0.17', port=5001,ssl_context='adhoc')
