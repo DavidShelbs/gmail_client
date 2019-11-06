@@ -19,7 +19,7 @@ def spam():
         session['SUBJECT'] = request.form.get('subject')
         session['MESSAGE'] = request.form.get('message')
         session['QUANTITY'] = request.form.get('quantity')
-        return redirect(oauth2.get_authorization_url("dnshelby712@gmail.com", None))
+        return redirect(oauth2.get_authorization_url(session['FROM'], None))
     except:
         return render_template('index.html')
 
