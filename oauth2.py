@@ -11,8 +11,8 @@ import json
 CLIENT_ID = "1092679958391-0lq3atdp9merjjuqijud0jhu92tg35ve.apps.googleusercontent.com"
 CLIENT_SECRET = "KIaKwYHlmligrnVOIPp-IysF"
 CLIENTSECRETS_LOCATION = 'client_secrets.json'
-# REDIRECT_URI = 'https://rollickboon.us/done'
-REDIRECT_URI = 'https://localhost/done'
+REDIRECT_URI = 'https://rollickboon.us/done'
+# REDIRECT_URI = 'https://localhost/done'
 SCOPES = [
     'https://mail.google.com/'
     # Add other requested scopes.

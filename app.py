@@ -48,7 +48,7 @@ def done():
         'client_secrets.json',
         scopes=['https://mail.google.com/'],
         state=state)
-        flow.redirect_uri = 'https://localhost/done'
+        flow.redirect_uri = 'https://rollickboon.us/done'
 
         authorization_response = request.url
         flow.fetch_token(authorization_response=authorization_response)
@@ -82,6 +82,6 @@ def done():
 if __name__ == "__main__":
     database = r"email_client.db"
     app.secret_key = os.urandom(24)
-    # app.run(debug=True, host='192.168.0.22', port=443, ssl_context='adhoc')
+    app.run(debug=True, host='192.168.0.22', port=443, ssl_context='adhoc')
     # app.run(debug=True,host='192.168.0.17', port=443,ssl_context='adhoc')
-    app.run(debug=True,host='0.0.0.0', port=443,ssl_context='adhoc')
+    # app.run(debug=True,host='0.0.0.0', port=443,ssl_context='adhoc')
