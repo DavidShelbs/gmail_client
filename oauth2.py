@@ -1,12 +1,18 @@
 import logging
 from oauth2client.client import flow_from_clientsecrets
 from oauth2client.client import FlowExchangeError
+from oauth2client.client import OAuth2WebServerFlow
+from oauth2client import client, GOOGLE_TOKEN_URI
 from apiclient import errors
 from apiclient.discovery import build
 import httplib2
+import json
 
+CLIENT_ID = "1092679958391-0lq3atdp9merjjuqijud0jhu92tg35ve.apps.googleusercontent.com"
+CLIENT_SECRET = "KIaKwYHlmligrnVOIPp-IysF"
 CLIENTSECRETS_LOCATION = 'client_secrets.json'
-REDIRECT_URI = 'https://rollickboon.us/done'
+# REDIRECT_URI = 'https://rollickboon.us/done'
+REDIRECT_URI = 'https://localhost/done'
 SCOPES = [
     'https://mail.google.com/'
     # Add other requested scopes.
@@ -83,8 +89,19 @@ def exchange_code(authorization_code):
   Raises:
     CodeExchangeException: an error occurred.
   """
-  flow = flow_from_clientsecrets(CLIENTSECRETS_LOCATION, ' '.join(SCOPES))
-  flow.redirect_uri = REDIRECT_URI
+  # flow = flow_from_clientsecrets(CLIENTSECRETS_LOCATION, ' '.join(SCOPES))
+  # flow.redirect_uri = REDIRECT_URI
+  # flow.params['access_type'] = 'offline'
+  # # flow.params['approval_prompt'] = 'force'
+  # flow.params['prompt'] = 'consent'
+  flow = OAuth2WebServerFlow(
+      client_id=CLIENT_ID,
+      client_secret=CLIENT_SECRET,
+      scope=SCOPES,
+      redirect_uri=REDIRECT_URI,
+      access_type='offline',
+      prompt='consent',
+  )
   try:
     credentials = flow.step2_exchange(authorization_code)
     return credentials
@@ -125,13 +142,21 @@ def get_authorization_url(email_address, state):
   Returns:
     Authorization URL to redirect the user to.
   """
-  flow = flow_from_clientsecrets(CLIENTSECRETS_LOCATION, ' '.join(SCOPES))
-  flow.params['access_type'] = 'offline'
-  # flow.params['approval_prompt'] = 'force'
-  flow.params['user_id'] = email_address
-  flow.params['state'] = state
-  flow.params['prompt'] = 'consent'
-  return flow.step1_get_authorize_url(REDIRECT_URI)
+  # flow = flow_from_clientsecrets(CLIENTSECRETS_LOCATION, ' '.join(SCOPES))
+  # flow.params['access_type'] = 'offline'
+  # # flow.params['approval_prompt'] = 'force'
+  # flow.params['user_id'] = email_address
+  # flow.params['state'] = state
+  # flow.params['prompt'] = 'consent'
+  flow = OAuth2WebServerFlow(
+      client_id=CLIENT_ID,
+      client_secret=CLIENT_SECRET,
+      scope=SCOPES,
+      redirect_uri=REDIRECT_URI,
+      access_type='offline',
+      prompt='consent',
+  )
+  return flow.step1_get_authorize_url(redirect_uri=REDIRECT_URI)
 
 
 def get_credentials(authorization_code, state):
@@ -158,7 +183,17 @@ def get_credentials(authorization_code, state):
   """
   email_address = ''
   try:
-    credentials = exchange_code(authorization_code)
+    # credentials = exchange_code(authorization_code)
+    credentials = client.OAuth2Credentials(
+    access_token = None,
+    client_id = CLIENT_ID,
+    client_secret = CLIENT_SECRET,
+    refresh_token = '1//0fmfuWyoi6WJiCgYIARAAGA8SNwF-L9IrwLlrQkaJ4LFOMvIInJTAuzVpSLDNmqsNYLVecfwRK6BXAZJ-avAykRuxVL_1nMy8zps',
+    token_expiry = None,
+    token_uri = GOOGLE_TOKEN_URI,
+    revoke_uri= None,
+    user_agent = None)
+
     user_info = get_user_info(credentials)
     email_address = user_info.get('email')
     user_id = user_info.get('id')

@@ -11,6 +11,7 @@ def build_service(credentials):
   Returns:
     Gmail service object.
   """
-  http = httplib2.Http()
-  http = credentials.authorize(http)
-  return build('gmail', 'v1', http=http)
+  # http = httplib2.Http()
+  # http = credentials.authorize(http)
+  # return build('gmail', 'v1', http=http)
+  return build('gmail', 'v1', credentials=credentials)
